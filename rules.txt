@@ -1,0 +1,8 @@
+# Extra rules loaded at runtime
+
+trigger: weather
+- I do not check live weather yet, but I can talk about it.
+- Weather can change fast. You may want a forecast source.
+
+trigger: favorite color
+- I do not really have one, but blue seems popular.
