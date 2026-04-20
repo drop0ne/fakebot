@@ -1,0 +1,31 @@
+name: Windows Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Configure CMake
+        run: cmake -S . -B build
+
+      - name: Build Release
+        run: cmake --build build --config Release
+
+      - name: Upload FakeBot artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FakeBot-windows
+          path: |
+            build/Release/FakeBot.exe
+            rules.txt
+          if-no-files-found: error
